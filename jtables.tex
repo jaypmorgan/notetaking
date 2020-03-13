@@ -25,3 +25,11 @@
         }
     ]{#4}#5
 }
+
+\newcommand{\readcsv}[1]{
+    \pgfplotstableread[col sep=comma]{#1}
+}
+
+\newcommand{\showtable}[2]{
+    \pgfplotstabletypeset[#1]{#2}
+}
