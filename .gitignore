@@ -1,0 +1,8 @@
+# ingore everything
+*
+
+# except these files
+!.gitignore
+!jtables.tex
+!makenote.sh
+!fancyNotes.sty
