@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fancyNotes}[v0.1 notes style file by Jay]
+
+\RequirePackage[left]{lineno}
+\RequirePackage{fancyhdr}
+\RequirePackage[a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt, inner=40pt, twoside, marginparsep=20pt]{geometry}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{etoolbox}
+
+\renewcommand{\title}[1]{\def\TITLE{#1}}
+\renewcommand{\author}[1]{\def\AUTHOR{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\ifdefined\AUTHOR
+    \lhead{\TITLE - \AUTHOR}
+\else
+    \lhead{\TITLE}
+\fi
+
+\rhead{\today}
+\fancyfoot[RE]{Page \thepage}
+\fancyfoot[LO]{Page \thepage}
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+\newcommand{\note}[1]{\marginpar{#1}}
+
+\linenumbers
+% no line numbers on headings
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\@startsection}{\@ifstar}{\nolinenumbers\@ifstar}{}{}
+\patchcmd{\@xsect}{\ignorespaces}{\linenumbers\ignorespaces}{}{}
+\makeatother
+\linenumbers
+
+\endinput
