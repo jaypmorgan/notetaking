@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fancyNotes}[v0.1 notes style file by Jay]
 
+\pdfmapfile{+baskervaldx/baskervaldx.map}
+
 \RequirePackage[left]{lineno}
 \RequirePackage{fancyhdr}
 \RequirePackage[a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt, inner=40pt, twoside, marginparsep=20pt]{geometry}
@@ -12,6 +14,11 @@
 \RequirePackage{url}
 \RequirePackage{svg}
 \RequirePackage{booktabs}
+
+%% Font Settings
+\RequirePackage[osf]{baskervaldx/Baskervaldx}
+\RequirePackage[baskervaldx,vvarbb]{newtxmath}
+\RequirePackage[italic,eulergreek]{mathastext}
 
 \input{includes/jtables}
 
