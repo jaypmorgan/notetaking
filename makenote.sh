@@ -4,7 +4,8 @@ while getopts ":lo" option; do
     case $option in
         l) FILE_TYPE=1 >&2;;
         o) FILE_TYPE=0 >&2;;
-        :) echo "You must specify latex or org mode with flags: [-l -o]";;
+	j) FILE_TYPE=2 >&2;;
+        :) echo "You must specify latex, org mode, julia markdown with flags: [-l -o -j]";;
     esac
 done
 
@@ -43,9 +44,25 @@ orgMode () {
     """ >> "$FILENAME"
 }
 
+juliaMarkdown() {
+    FILENAME="$DATE-$FILE_TITLE.jmd"
+    touch "$FILENAME"
+    echo """---
+title : $TITLE
+date : $DATE
+template : fancyNotes.tpl
+---
+
+""" >> "$FILENAME"
+}
+
 if [[ $FILE_TYPE == 1 ]]; then
     latex
 fi
 if [[ $FILE_TYPE == 0 ]]; then
     orgMode
+fi
+
+if [[ $FILE_TYPE == 2 ]]; then
+    juliaMarkdown
 fi
