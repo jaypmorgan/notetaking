@@ -1,10 +1,10 @@
 #!/bin/bash
 
-while getopts ":lo" option; do
+while getopts ":loj" option; do
     case $option in
         l) FILE_TYPE=1 >&2;;
         o) FILE_TYPE=0 >&2;;
-	j) FILE_TYPE=2 >&2;;
+        j) FILE_TYPE=2 >&2;;
         :) echo "You must specify latex, org mode, julia markdown with flags: [-l -o -j]";;
     esac
 done
@@ -44,7 +44,7 @@ orgMode () {
     """ >> "$FILENAME"
 }
 
-juliaMarkdown() {
+juliaMarkdown () {
     FILENAME="$DATE-$FILE_TITLE.jmd"
     touch "$FILENAME"
     echo """---
