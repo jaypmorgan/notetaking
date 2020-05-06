@@ -3,23 +3,27 @@
 
 %%\pdfmapfile{+includes/baskervaldx/baskervaldx.map}
 
-\RequirePackage[left]{lineno}
+%% \RequirePackage[left]{lineno}
 \RequirePackage{fancyhdr}
 \RequirePackage[a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt, inner=40pt, twoside, marginparsep=20pt]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{etoolbox}
 \RequirePackage{pgfplots}
+    \pgfplotsset{compat=newest}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage{url}
 \RequirePackage{svg}
 \RequirePackage{booktabs}
+\RequirePackage{hyperref}
+\RequirePackage{xkeyval}  % better optional parameters
+\RequirePackage{xparse}
+\RequirePackage{multirow}
 
 %% Font Settings
 \RequirePackage[osf]{includes/baskervaldx/Baskervaldx}
 \RequirePackage[baskervaldx,vvarbb]{newtxmath}
 \RequirePackage[italic,eulergreek]{mathastext}
-
 
 \input{includes/jtables}
 
@@ -28,11 +32,7 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\ifdefined\AUTHOR
-    \lhead{\TITLE - \AUTHOR}
-\else
-    \lhead{\TITLE}
-\fi
+\lhead{\TITLE}
 
 \rhead{\today}
 \fancyfoot[RE]{Page \thepage}
@@ -42,13 +42,24 @@
 \setlength{\parindent}{0em}
 \newcommand{\note}[1]{\marginpar{#1}}
 
-\linenumbers
-% no line numbers on headings
+\linenumbers % no line numbers on headings
 \makeatletter
 % \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
 \patchcmd{\@startsection}{\@ifstar}{\nolinenumbers\@ifstar}{}{}
 \patchcmd{\@xsect}{\ignorespaces}{\linenumbers\ignorespaces}{}{}
 \makeatother
-\linenumbers
+%% \linenumbers
+
+%%% default table fonts
+\pgfplotstableset{
+  every head row/.style={before row={\toprule}, after row={\midrule}},
+  every last row/.style={after row={\bottomrule}},
+  assign column name/.style={
+    /pgfplots/table/column name={\textsc{#1}},
+  },
+}
+
+% links in footer
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 
 \endinput
