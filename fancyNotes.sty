@@ -5,7 +5,9 @@
 
 %% \RequirePackage[left]{lineno}
 \RequirePackage{fancyhdr}
-\RequirePackage[a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt, inner=40pt, twoside, marginparsep=20pt]{geometry}
+\RequirePackage[
+  a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt,
+  inner=40pt, twoside, marginparsep=20pt]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{etoolbox}
 \RequirePackage{pgfplots}
@@ -20,12 +22,13 @@
 \RequirePackage{xparse}
 \RequirePackage{multirow}
 \RequirePackage{tikz}
-
-\usetikzlibrary{positioning}
+    \usetikzlibrary{positioning}
+\RequirePackage{bm}
 
 %% Font Settings
-\RequirePackage[osf]{includes/baskervaldx/Baskervaldx}
-\RequirePackage[baskervaldx,vvarbb]{newtxmath}
+%% \RequirePackage[osf]{includes/baskervaldx/Baskervaldx}
+\RequirePackage{baskervald}
+\RequirePackage[baskervaldx]{newtxmath}
 \RequirePackage[italic,eulergreek]{mathastext}
 
 \input{includes/jtables}
