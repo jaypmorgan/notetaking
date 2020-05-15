@@ -1,13 +1,12 @@
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}%
 \ProvidesPackage{includes/fancyNotes}[v0.1 notes style file by Jay]
 
 %%\pdfmapfile{+includes/baskervaldx/baskervaldx.map}
 
-%% \RequirePackage[left]{lineno}
 \RequirePackage{fancyhdr}
 \RequirePackage[
-  a4paper, bottom=0.9in, top=1in, marginparwidth=100pt, textwidth=400pt,
-  inner=40pt, twoside, marginparsep=20pt]{geometry}
+  a4paper, bottom=0.9in, top=1in, marginparwidth=80pt, textwidth=430pt,
+  inner=40pt, marginparsep=20pt]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{etoolbox}
 \RequirePackage{pgfplots}
@@ -26,15 +25,14 @@
 \RequirePackage{bm}
 
 %% Font Settings
-%% \RequirePackage[osf]{includes/baskervaldx/Baskervaldx}
 \RequirePackage{baskervald}
 \RequirePackage[baskervaldx]{newtxmath}
 \RequirePackage[italic,eulergreek]{mathastext}
 
-\input{includes/jtables}
+\input{includes/jtables}%
 
-\renewcommand{\title}[1]{\def\TITLE{#1}}
-\renewcommand{\author}[1]{\def\AUTHOR{#1}}
+\renewcommand{\title}[1]{\def\TITLE{#1}}%
+\renewcommand{\author}[1]{\def\AUTHOR{#1}}%
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -46,7 +44,7 @@
 
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
-\newcommand{\note}[1]{\marginpar{#1}}
+\newcommand{\note}[1]{\marginpar{#1}}%
 
 \linenumbers % no line numbers on headings
 \makeatletter
@@ -54,18 +52,17 @@
 \patchcmd{\@startsection}{\@ifstar}{\nolinenumbers\@ifstar}{}{}
 \patchcmd{\@xsect}{\ignorespaces}{\linenumbers\ignorespaces}{}{}
 \makeatother
-%% \linenumbers
 
 %%% default table fonts
-\pgfplotstableset{
+\pgfplotstableset{%
   every head row/.style={before row={\toprule}, after row={\midrule}},
   every last row/.style={after row={\bottomrule}},
-  assign column name/.style={
+  assign column name/.style={%
     /pgfplots/table/column name={\textsc{#1}},
   },
 }
 
 % links in footer
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}%
 
 \endinput
