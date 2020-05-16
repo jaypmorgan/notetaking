@@ -25,11 +25,12 @@
 \RequirePackage{bm}
 
 %% Font Settings
-\RequirePackage{baskervald}
-\RequirePackage[baskervaldx]{newtxmath}
-\RequirePackage[italic,eulergreek]{mathastext}
+% \RequirePackage{baskervald}
+% \RequirePackage[baskervaldx]{newtxmath}
+% \RequirePackage[italic,eulergreek]{mathastext}
+\RequirePackage{librebaskerville}
 
-\input{includes/jtables}%
+% \input{includes/jtables}%
 
 \renewcommand{\title}[1]{\def\TITLE{#1}}%
 \renewcommand{\author}[1]{\def\AUTHOR{#1}}%
@@ -42,16 +43,8 @@
 \fancyfoot[RE]{Page \thepage}
 \fancyfoot[LO]{Page \thepage}
 
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0em}
+\linespread{1.15}
 \newcommand{\note}[1]{\marginpar{#1}}%
-
-\linenumbers % no line numbers on headings
-\makeatletter
-% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
-\patchcmd{\@startsection}{\@ifstar}{\nolinenumbers\@ifstar}{}{}
-\patchcmd{\@xsect}{\ignorespaces}{\linenumbers\ignorespaces}{}{}
-\makeatother
 
 %%% default table fonts
 \pgfplotstableset{%
