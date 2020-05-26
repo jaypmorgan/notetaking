@@ -53,3 +53,17 @@
 \newcommand{\showtable}[2]{
     \pgfplotstabletypeset[#1]{#2}
 }
+
+
+%% Place in .style{}
+%% usage: \combineRow{<number of multirows>}
+
+\newcommand{\combineRow}[1]{
+    assign cell content/.code={%
+        \pgfmathparse{int(Mod(\pgfplotstablerow,#1)}%
+        \ifnum\pgfmathresult=0%
+            \pgfkeyssetvalue{/pgfplots/table/@cell content}%
+            {\multirow{#1}{*}{##1}}%
+        \fi%
+    },
+}
