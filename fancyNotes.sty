@@ -1,12 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}%
 \ProvidesPackage{includes/fancyNotes}[v0.1 notes style file by Jay]
 
-%%\pdfmapfile{+includes/baskervaldx/baskervaldx.map}
-
 \RequirePackage{fancyhdr}
 \RequirePackage[
-  a4paper, bottom=0.9in, top=1in, marginparwidth=80pt, textwidth=430pt,
-  inner=40pt, marginparsep=20pt]{geometry}
+  a4paper, bottom=1.3in, top=1.3in, marginparwidth=80pt, textwidth=430pt,
+  outer=50pt, marginparsep=10pt]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{etoolbox}
 \RequirePackage{pgfplots}
@@ -23,27 +21,27 @@
 \RequirePackage{tikz}
     \usetikzlibrary{positioning}
 \RequirePackage{bm}
-
-%% Font Settings
-\RequirePackage{baskervald}
-\RequirePackage[baskervaldx]{newtxmath}
-\RequirePackage[italic,eulergreek]{mathastext}
+\RequirePackage{ragged2e}
+\RequirePackage{sectsty}
 
 \input{includes/jtables}%
 
 \renewcommand{\title}[1]{\def\TITLE{#1}}%
 \renewcommand{\author}[1]{\def\AUTHOR{#1}}%
 
+\allsectionsfont{\mdseries\scshape}
+
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\TITLE}
+\renewcommand{\footrulewidth}{0.01pt}
+\fancyhead[LE,LO]{\TITLE}
+\fancyhead[RE,RO]{\today}
+\fancyfoot[RE,RO]{\thepage}
 
-\rhead{\today}
-\fancyfoot[RE]{Page \thepage}
-\fancyfoot[LO]{Page \thepage}
+% \linespread{1.15}
+\newcommand{\note}[1]{\reversemarginpar\marginpar{\begin{flushright}\scriptsize #1\end{flushright}}}%
 
-\linespread{1.15}
-\newcommand{\note}[1]{\marginpar{#1}}%
+\setlength{\parskip}{10pt} \setlength{\parindent}{0pt}
 
 %%% default table fonts
 \pgfplotstableset{%
