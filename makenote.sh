@@ -48,9 +48,11 @@ juliaMarkdown () {
     FILENAME="$DATE-$FILE_TITLE.jmd"
     touch "$FILENAME"
     echo """---
-title : $TITLE
-date : $DATE
-template : fancyNotes.tpl
+title: $TITLE
+date: $DATE
+weave_options:
+    template: includes/fancyNotes.tpl
+    latex_cmd: ["tectonic"]
 ---
 
 """ >> "$FILENAME"
