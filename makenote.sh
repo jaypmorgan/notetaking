@@ -33,7 +33,7 @@ orgMode () {
     FILENAME="$DATE-$FILE_TITLE.org"
 
     touch "$FILENAME"
-    echo """#+TITLE:
+    echo """#+TITLE: $TITLE
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \title{$TITLE}
 #+LATEX_HEADER: \usepackage{includes/fancyNotes}
@@ -48,9 +48,11 @@ juliaMarkdown () {
     FILENAME="$DATE-$FILE_TITLE.jmd"
     touch "$FILENAME"
     echo """---
-title : $TITLE
-date : $DATE
-template : fancyNotes.tpl
+title: $TITLE
+date: $DATE
+weave_options:
+    template: includes/fancyNotes.tpl
+    latex_cmd: ["tectonic"]
 ---
 
 """ >> "$FILENAME"
