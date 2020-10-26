@@ -33,7 +33,7 @@ orgMode () {
     FILENAME="$DATE-$FILE_TITLE.org"
 
     touch "$FILENAME"
-    echo """#+TITLE:
+    echo """#+TITLE: $TITLE
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \title{$TITLE}
 #+LATEX_HEADER: \usepackage{includes/fancyNotes}
